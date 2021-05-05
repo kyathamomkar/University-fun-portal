@@ -1,0 +1,2 @@
+insert into UBS.exchange (id, title, description, email, image, posttime, like, dislike) values (6, 'Covid-19 Update', 'Fall Classes are in person', 'ubs@gmail.com', '/images/exchange/UTA.jpeg', '2021-03-31 22:49:19', 104, 55);
+insert into UBS.exchange (id, title, description, email, image, posttime, like, dislike) values (11, 'UBS System Update', 'Feature update', 'ubs@gmail.com', 'images/exchange/UBS.png', '2021-04-02 02:57:10', 0, 1);

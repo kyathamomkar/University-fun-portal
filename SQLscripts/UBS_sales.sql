@@ -1,0 +1,3 @@
+insert into UBS.sales (id, email, description, price, salefeature, itemname, image) values (57, 'ubs@gmail.com', 'Never used book because Prof. Khalili''s teachings are sufficient ', 30, 'Exchange', 'SE Book', 'https://images-na.ssl-images-amazon.com/images/I/513ME3UUZCL._SX380_BO1,204,203,200_.jpg');
+insert into UBS.sales (id, email, description, price, salefeature, itemname, image) values (58, 'ubs@gmail.com', 'New because I failed last semester', 80, 'Lend', 'Graduation Cap', 'https://bkstr.scene7.com/is/image/Bkstr/18931976');
+insert into UBS.sales (id, email, description, price, salefeature, itemname, image) values (59, 'ubs@gmail.com', 'Because Texas is 100% Open', 10, 'Sell', 'UTA Masks', '/images/masks.jpg');

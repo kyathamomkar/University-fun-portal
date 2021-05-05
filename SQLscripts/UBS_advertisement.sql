@@ -1,0 +1,3 @@
+insert into UBS.advertisement (id, title, description, location, email, image, like, dislike) values (169, '10% Discount on Laptops', 'Hurry up!! Grab the offer before it expires. Visit UTA Bookstore for additional details.', 'UTA Bookstore', 'alexmooz@gmail.com', 'images/bookstore.jpg', 6, 10);
+insert into UBS.advertisement (id, title, description, location, email, image, like, dislike) values (170, 'Free Pizza every Friday', 'Come grab a pizza for free, all on Us.', 'Old School Pizza', 'kyathamomkar@gmail.com', 'images/pizza.jfif', 3, 0);
+insert into UBS.advertisement (id, title, description, location, email, image, like, dislike) values (324, 'Party', 'its  a party', 'CSE', 'ayman_omc@yahoo.com', 'images/1200px-7_Up_-_You_like_it,_it_likes_you,_1948.jpg', 1, 0);
