@@ -1,0 +1,14 @@
+[27-Apr-2021 00:01:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on bool in /home/omkarkya/ubs.omkarkyatham.uta.cloud/get_users.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/omkarkya/ubs.omkarkyatham.uta.cloud/get_users.php on line 18
+[27-Apr-2021 00:27:39 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/omkarkya/ubs.omkarkyatham.uta.cloud/sendmessage.php:34) in /home/omkarkya/ubs.omkarkyatham.uta.cloud/sendmessage.php on line 44
+[27-Apr-2021 20:17:40 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13
+[27-Apr-2021 20:17:53 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13
+[27-Apr-2021 20:18:06 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13
+[28-Apr-2021 23:39:21 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13
+[28-Apr-2021 23:42:19 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13
+[28-Apr-2021 23:43:58 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13
+[28-Apr-2021 23:44:23 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13
+[28-Apr-2021 23:49:08 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13
+[28-Apr-2021 23:50:32 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/omkarkya/ubs.omkarkyatham.uta.cloud/checkProfilePassword.php on line 13

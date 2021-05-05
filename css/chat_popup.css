@@ -1,0 +1,143 @@
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  z-index: 9;
+border-radius: 18px 18px 0px 0px;
+box-shadow: 0 0 20px 5px #04091e14;
+border: 0.0px solid #dad8d8;
+  
+}
+
+
+.livechatbox{
+	border-radius: 18px 18px 0px 0px;
+	background: #fefeff;
+	min-height:65vh;
+	min-width:330px;
+	max-height:65vh;
+	max-width:330px;
+	transition: all 0.5s ease-in-out;
+}
+
+.slidedown{
+	min-height:7vh;
+	max-height:7vh;
+	transition: all 0.5s ease-in-out;
+}
+
+.vdiv.lowerbody{
+	display:none;
+}
+
+.vdiv{
+	display:block;
+}
+
+.vdiv1{
+	border-bottom-style: inset;
+	cursor:pointer;
+}
+
+.fbico{
+	float:right; cursor:pointer;margin-right:8px;
+}
+ 
+.livechatdiv{
+	min-height:49vh;
+	background-color: #fefeff;
+	overflow:scroll;
+	overflow-x:hidden;
+}
+
+.text
+ {
+	 border-radius:12px;
+	 background-color: #9ca1a538;
+ }
+ 
+ .livechattext{
+	text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+ }
+ 
+ /* ul */
+ #livechatmessages{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	font-size: .9375rem;
+ }
+ 
+ .updownarrow {
+  transition: transform 1s;
+}
+
+.updownarrow.rotation {
+  transform: rotate(540deg);
+}
+ 
+ 
+ .notices{
+	align-self: center;
+	font-size: .7400rem;
+	color: #8a8f92;
+	margin:5px;
+ }
+ 
+ .message{
+	position: relative;
+	font-family: 'Source Sans Pro', sans-serif;
+	max-width:70%;
+	padding-left: 0.8rem;
+    padding-right: 1.23rem;
+	line-height:1.5;
+	border-radius:12px;
+	padding: 5px 15px 5px 15px;
+	margin-bottom:2px;
+ }
+ 
+ .sendertitle{
+	align-self: flex-start;
+	font-size: .7400rem;
+	color: #8a8f92;
+	margin:0px;
+	margin-bottom: -10px;
+    margin-left: 10px;
+	
+ }
+ 
+.leftmessage
+{
+background :#e4e6eb;
+color:#050505;
+}
+
+.rightmessage
+{
+background : rgb(0,132,255);
+color: white;
+align-self: flex-end;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+.blink {
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite;
+}

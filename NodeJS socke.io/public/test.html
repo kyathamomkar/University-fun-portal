@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Group Chat on Node.js</title>
+    <style>
+	body {
+	margin-top:20px;
+	}
+      	 ul{
+		 text-align:left;
+		 
+	 }
+	 
+#livechatmessages > .tooltip > .tooltip-inner{
+	font-size: .7500rem;
+	color: #8a8f92;
+	background:transparent;
+}
+#livechatmessages > .tooltip > .arrow{
+	display:none;
+}
+.dvi{
+margin:40px;
+}
+  
+    </style>
+	<script src= "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.socket.io/4.0.1/socket.io.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <link type="text/css" href="css/userhomepage.css" rel="stylesheet">
+  <link href="css/chat_popup.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+   <script>
+$(document).ready(function(){
+  $('body').tooltip({selector:'[data-toggle="tooltip"]',animation: true,delay: {show: 300, hide: 30}});
+});
+</script>
+<audio id="fbnewmessage"> 
+  <source src="./music/newmessagetone.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<div class="dvi">
+						<h3>Facebook chat clone</h3>
+						<ul>
+						<li>
+						Server Running on Node.js
+						</li>
+						<li>
+						Realtime Chat is by using Socket.io
+						</li>
+						<li>
+						Duplicate the window and add users to chat to enjoy full experience
+						</li>
+						<li>
+						Click <strong> <svg xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="-4 -4 24 24"><line x1="2" x2="14" y1="8" y2="8" stroke-linecap="round" stroke-width="2" stroke="rgb(0,132,255)"></line></svg></strong>
+						to minimise, and <strong> <svg xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" viewBox="-4 -4 24 24"><line x1="2" x2="14" y1="2" y2="14" stroke-linecap="round" stroke-width="2" stroke="rgb(0,132,255)"></line><line x1="2" x2="14" y1="14" y2="2" stroke-linecap="round" stroke-width="2" stroke="rgb(0,132,255)"></line></svg></strong> to exit the chat
+						</li>
+						<li>
+						Download the code <i><a href='http://github.com/kyathamomkar/University-site' target="_blank">here</a></i> from github
+						</li>
+						</ul>
+						<hr>
+						<button type="button" onclick="openForm()" class="btn btn-outline-primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-record-btn" viewBox="0 0 16 16">
+  <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"></path>
+</svg>
+						Live Chat</button>
+	</div>				 
+
+    <div class="chat-popup" id="myForm">
+  <div class="d-flex flex-column livechatbox">
+  <div class="p-2 vdiv vdiv1">
+		  <span class="livechattext" onclick="minimise()"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-record-btn" viewBox="0 0 16 16">
+		   <path class="blink" d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+		  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"></path>
+		</svg>  Live Chat <svg class="updownarrow" width="15px" height="15px" viewBox="0 0 18 10"><path fill="currentColor"  d="M1 2.414A1 1 0 012.414 1L8.293 6.88a1 1 0 001.414 0L15.586 1A1 1 0 0117 2.414L9.707 9.707a1 1 0 01-1.414 0L1 2.414z"></path></svg>
+		</span> <svg onclick="closeForm()" data-toggle="tooltip" data-placement="top" title="Exit Chat"  class="fbico"  width="26px" height="26px" viewBox="-4 -4 24 24"><line x1="2" x2="14" y1="2" y2="14" stroke-linecap="round" stroke-width="2" stroke="rgb(0,132,255)"></line><line x1="2" x2="14" y1="14" y2="2" stroke-linecap="round" stroke-width="2" stroke="rgb(0,132,255)"></line></svg>
+		<svg onclick="minimise()" data-toggle="tooltip" data-placement="top" title="Minimise" class="fbico" width="26px" height="26px" viewBox="-4 -4 24 24"><line x1="2" x2="14" y1="8" y2="8" stroke-linecap="round" stroke-width="2" stroke="rgb(0,132,255)"></line></svg>
+</div>
+  <div class="p-2 vdiv livechatdiv v2">
+  <ul id="livechatmessages">
+  </ul></div>
+  <div class="p-2 vdiv v3">
+  <div class="container">   
+<form action="/" method="POST" id="chatForm">  
+        <div class="row content">
+		 
+			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="padding:0px !important">
+				<input required id="txt" class="text form-control mbody" autocomplete="off" autofocus="on" placeholder="Aa" />
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="display: contents;padding:0px !important">
+				<button class="btn"  data-toggle="tooltip" data-placement="top" title="Send" style="margin:auto;">
+				<svg width="20px" height="20px" viewBox="0 0 24 24"><path fill="rgb(0,132,255)" d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.8429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 C22.8132856,11.0605983 22.3423792,10.4322088 21.714504,10.118014 L4.13399899,1.16346272 C3.34915502,0.9 2.40734225,1.00636533 1.77946707,1.4776575 C0.994623095,2.10604706 0.8376543,3.0486314 1.15159189,3.99121575 L3.03521743,10.4322088 C3.03521743,10.5893061 3.34915502,10.7464035 3.50612381,10.7464035 L16.6915026,11.5318905 C16.6915026,11.5318905 17.1624089,11.5318905 17.1624089,12.0031827 C17.1624089,12.4744748 16.6915026,12.4744748 16.6915026,12.4744748 Z" fill-rule="evenodd" stroke="none"></path>
+				</svg>
+				</button>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+  
+ 
+  </div>
+</div>
+	
+	
+     <script>
+  var chatJoined = false; 
+  var socket = null;
+  
+  function getTime(){
+	  var dt = new Date();
+	  var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+	  return time;
+  }
+  
+function openForm() {
+  
+  var uname = prompt("Enter your good name to join the chat");
+  if(uname.length>0)
+  {
+  $('#myForm').css('display', 'block');
+  
+  if(!chatJoined){
+	  
+  socket = io.connect('http://ubschat-env-1.eba-mhbkwqpq.us-east-1.elasticbeanstalk.com',{'forceNew':true });
+
+    // ask username
+	
+	 socket.emit('username', uname);
+	 chatJoined = true;
+// append the incoming chat text message
+	socket.on('chat_message', function(data){
+		
+		if (($('#livechatmessages li:last-child').hasClass('rightmessage')) || ($('#livechatmessages li:last-child').attr("sender")!==data.sender)) {
+					$('#livechatmessages').append($('<li class="sendertitle animate__animated animate__fadeIn">').html(data.sender));
+					$('#livechatmessages').append($('<li class="leftmessage message animate__animated animate__bounceInLeft" data-container="#livechatmessages" data-toggle="tooltip" data-placement="left" title="'+getTime()+'" sender="'+data.sender+'" style="margin-top:10px;">').html(data.text));
+				}
+		else{
+			// if the last message title is same user's then do below 2 lines
+			$('#livechatmessages li:last-child').css({"border-bottom-left-radius":"3px"});	
+			$('#livechatmessages').append($('<li class="leftmessage message animate__animated animate__bounceInLeft" data-container="#livechatmessages" data-toggle="tooltip" data-placement="left" title="'+getTime()+'"  sender="'+data.sender+'" style="border-top-left-radius:3px;">').html(data.text));
+		}
+		$('.livechatdiv').animate({scrollTop: $('.livechatdiv').get(0).scrollHeight}, 800);
+		 $('#fbnewmessage').trigger("play");
+	});
+
+	// append text if someone is online
+	socket.on('is_online', function(username) {
+		$('#livechatmessages').append($('<li class="notices">').html(username));
+		$('.livechatdiv').animate({scrollTop: $('.livechatdiv').get(0).scrollHeight}, 800);
+	});
+     
+ }	
+}
+}
+
+
+// submit text message without reload/refresh the page
+	$('#chatForm').submit(function(e){
+		e.preventDefault(); // prevents page reloading
+		if(socket!==null && $('#txt').val()){
+		socket.emit('chat_message', $('#txt').val());
+		
+		if ($('#livechatmessages li:last-child').hasClass('leftmessage'))
+			{
+					$('#livechatmessages').append($('<li class="rightmessage message animate__animated animate__bounceInRight" data-container="#livechatmessages" data-toggle="tooltip" data-placement="right" title="'+getTime()+'" style="margin-top:10px;">').html($('#txt').val()));
+			}
+		else
+			{
+			$('#livechatmessages li:last-child').css({"border-bottom-right-radius":"3px"});	
+			$('#livechatmessages').append($('<li class="rightmessage message animate__animated animate__bounceInRight" data-container="#livechatmessages" data-toggle="tooltip" data-placement="right" title="'+getTime()+'" style="border-top-right-radius:3px;">').html($('#txt').val()));
+			}
+		$('.livechatdiv').animate({scrollTop: $('.livechatdiv').get(0).scrollHeight}, 800);
+		$('#txt').val('');
+	 
+		return false;
+		}
+	});
+
+
+function minimise() {
+   $('.v2,.v3').toggleClass('lowerbody');
+   $('.livechatbox').toggleClass('slidedown');
+   $('.updownarrow').toggleClass('rotation');
+}
+ 
+
+function closeForm() {
+  socket.disconnect();
+  socket = null;
+  chatJoined = false;
+  $('#livechatmessages').empty();
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+  </body>
+</html>
